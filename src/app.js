@@ -12,8 +12,7 @@ app.use(cors());
 app.use(json());
 
 
-const url_db = process.env.DATABASE_URL;
-const mongoClient = new MongoClient(url_db);
+const mongoClient = new MongoClient(process.env.DATABASE_URL);
 let db;
 
 mongoClient.connect()
