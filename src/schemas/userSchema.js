@@ -11,8 +11,3 @@ export const userSiginSchema = joi.object({
     password: joi.string().required()
 })
 
-export const transactions = joi.object({
-    value: joi.float(),
-    description: joi.string(),
-    type: joi.string()
-})

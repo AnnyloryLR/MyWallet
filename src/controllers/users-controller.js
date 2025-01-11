@@ -9,6 +9,15 @@ export async function signUp(req, res){
     const user = req.body;
 
     try {
+
+        const registeredUser = await db.collection("users").findOne({
+            email:user.email
+        });
+
+        if(registeredUser){
+            return res.status(409).send("Usuário existente.")
+        }
+
         await db.collection("users").insertOne({
             ...user, password: bcrypt.hashSync(user.password, 10)
         })
@@ -30,7 +39,7 @@ export async function signIn(req, res){
         });
 
         if(!registeredUser){
-            return res.status(401).send("Email e senha incompatíveis.")
+            return res.status(404).send("Usuário não cadastrado.")
         }
 
         if(registeredUser && bcrypt.compareSync(user.password, registeredUser.password)){
