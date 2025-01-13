@@ -23,9 +23,18 @@ export async function transactionCreate(req, res){
 }
 
 export async function getTransactions(req, res){
-
+    const page = req.query.page || 1;
+    const limit = 10;
+    const start = (page -1)* limit;
+    
     try {
-        const transactions = await db.collection("transactions").find().toArray();
+        const transactions = await db
+        .collection("transactions")
+        .find()
+        .skip(start)
+        .limit(limit)
+        .toArray();
+
         return res.send(transactions);
 
     } catch (error) {
