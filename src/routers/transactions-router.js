@@ -3,9 +3,9 @@ import { getTransactions,
          transactionCreate,
          transactionDelete, 
          transactionEdit } 
-         from "../controllers/transactions-controller";
-import { schemaValidate } from "../middlewares/schema-middleware";
-import { transactions } from "../schemas/transactions-schema";
+         from "../controllers/transactions-controller.js";
+import { schemaValidate } from "../middlewares/schema-middleware.js";
+import { transactions } from "../schemas/transactions-schema.js";
 
 const transactionsRouter = Router();
 
