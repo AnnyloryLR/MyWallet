@@ -12,6 +12,10 @@ const app = express();
 app.use(cors());
 app.use(json());
 
+app.get("/health", (req, res) => {
+    res.status(200).send("I'm ok!");
+})
+
 app.use(authenticationRouter);
 app.use(transactionsRouter);
 
