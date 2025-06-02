@@ -7,6 +7,6 @@ const authenticationRouter = Router();
 
 
 authenticationRouter.post("/sign-up", schemaValidate(userSignupSchema), signUp);
-authenticationRouter.post("/sign-in", schemaValidate(userSigninSchema), signIn);
+authenticationRouter.post("/", schemaValidate(userSigninSchema), signIn);
 
 export default authenticationRouter;
